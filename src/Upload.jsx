@@ -7,15 +7,25 @@ class Upload extends React.Component {
         super();
         this.state = {
             data: 'No data',
-            btnActive: false
+            btnActive: false,
+            count: 0
         };
+    }
+
+    componentDidMount() {
+        axios.get(`${this.props.uri_back}/cv/count`)
+        .then((res) => {
+            console.log(res.data);
+            this.setState({ count: res.data });
+        });
     }
 
     showFile = async (event) => {
         event.preventDefault();
         const reader = new window.FileReader();
         reader.onload = async (e) => {
-            const text = (e.target.result);
+            let text = (e.target.result);
+            text = JSON.stringify(JSON.parse(text), undefined, 4);
             this.setState({ data: text });
         };
         reader.readAsText(event.target.files[0]);
@@ -26,9 +36,11 @@ class Upload extends React.Component {
         let data = {};
         if (this.state.data.length !== 0 && this.state.data.length >= 100 && this.state.data !== 'No data') {
             data = JSON.parse(this.state.data);
+            data.basics.user_id = this.state.count + 1;
             console.log(data);
             axios.post(`${this.props.uri_back}/cv/add`, data)
                 .then((res) => {
+                    this.setState({ data: 'OK' });
                     console.log(res);
                 });
         }
@@ -45,8 +57,11 @@ class Upload extends React.Component {
                 <div style={{ marginTop: '100px' }}>
                     <input type="file" onChange={(e) => this.showFile(e)} />
                 </div>
-                <form style={{ marginTop: '70px', width: '100%' }} onSubmit={this.importCV} className="container d-flex justify-content-start">
-                    <textarea className="form-control" onChange={this.dataChange} style={{ width: '100%', height: '60vh' }} value={this.state.data}>{'No data'}</textarea>
+                <form style={{ marginTop: '70px', width: '100%' }} onSubmit={this.importCV} className="container">
+                    <div className="form-group">
+                        <textarea className="form-control" onChange={this.dataChange} style={{ width: '100%', height: '60vh' }} value={this.state.data}>{'No data'}</textarea>
+                    </div>
+                    <div className="form-group">
                     {
                         this.state.btnActive === true ? (
                             <button className="btn btn-success" type="submit">{'Importer mon CV'}</button>
@@ -54,6 +69,7 @@ class Upload extends React.Component {
                                 <button className="btn btn-success" type="submit" disabled>{'Importer mon CV'}</button>
                             )
                     }
+                    </div>
                 </form>
             </div>
         );

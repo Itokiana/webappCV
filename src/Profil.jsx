@@ -15,8 +15,11 @@ class Profil extends React.Component {
     }
 
     componentDidMount() {
-        Axios.get(`${this.props.uri_back}/cv/${this.props.match.params.oid}/show`)
+        const ref = this.props.match.params.ref.split('-');
+        const oid = ref[ref.length - 1];
+        Axios.get(`${this.props.uri_back}/cv/${oid}/show`)
         .then((res) => {
+            console.log(res.data);
             this.setState({ data: res.data, customization: res.data.resumeCustomization || {} });
         });
     }

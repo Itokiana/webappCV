@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route
 } from 'react-router-dom';
@@ -11,7 +11,7 @@ import ListCV from './ListCV';
 import CreateProfile from './CreateProfile';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const uri = 'http://localhost:5000';
+const uri = 'http://212.227.213.9';
 
 function App() {
     return (
@@ -21,13 +21,14 @@ function App() {
                     renders the first one that matches the current URL. */}
                 <Switch>
                     <Route
-                        path="/cv/:oid"
+                        exact
+                        path="/:ref"
                         render={({ match }) => <Profil match={match} uri_back={uri} />}
                     />
-                    <Route path="/create">
+                    <Route path="/new/create">
                         <CreateProfile />
                     </Route>
-                    <Route path="/import">
+                    <Route path="/new/import">
                         <Upload uri_back={uri} />
                     </Route>
                     <Route path="/">

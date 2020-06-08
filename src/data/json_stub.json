@@ -1,12 +1,12 @@
 {
     "basics": {
-        "name": "Itokiana Rajoelison",
+        "name": "John Doe",
         "label": "Programmer",
-        "picture": "https://scontent.ftnr2-1.fna.fbcdn.net/v/t1.0-9/fr/cp0/e15/q65/89352498_2563884867073234_2645722179576004608_o.jpg?_nc_cat=111&_nc_sid=85a577&efg=eyJpIjoiYiJ9&_nc_eui2=AeEZLTcJ12Q5ZHs9jHCrxRtaFIHOVdqinw8Ugc5V2qKfDyFnByQvKPtyxIWGh9dyU7TgOw-hk4Ex5btmbO_zyni-&_nc_ohc=SK3oCztSWTcAX9rcNkd&_nc_ht=scontent.ftnr2-1.fna&_nc_tp=14&oh=fda917c0cd857a3474b6a8b01387dbf5&oe=5EB52BEC",
-        "email": "itokianarajoelison@gmail.com",
+        "picture": "",
+        "email": "noob@example.com",
         "phone": "(912) 555-4321",
-        "website": "http://itokiana.herokuapp.com",
-        "summary": "Expert BU, Coach, Developer Fullstack",
+        "website": "http://example.com",
+        "summary": "Developer Junior",
         "location": {
             "address": "2712 Broadway St",
             "postalCode": "CA 94115",
@@ -163,7 +163,7 @@
         {
             "name": "Développement d'un serpent connecté",
             "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-            "images": []
+            "images": [{"url":"https://www.elsetge.cat/myimg/f/127-1273597_photo-wallpaper-heroes-heroes-wtf-team-dota-zeus.jpg"}]
         }
     ],
     "specific": {
